@@ -1,5 +1,5 @@
-const express = require("express");
-const serverless = require("serverless-http");
+import express from "express";
+import serverless from "serverless-http";
 
 const app = express();
 const router = express.Router();
@@ -18,4 +18,6 @@ router.get("/hello", (req, res) => {
 
 app.use("/", router);
 
-module.exports.handler = serverless(app);
+const handler = serverless(app as any);
+
+export { handler };
